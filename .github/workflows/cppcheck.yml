@@ -1,0 +1,16 @@
+name: cppcheck-action
+on: [push]
+
+jobs:
+  build:
+    name: cppcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: cppcheck
+        uses: deep5050/cppcheck-action@patch1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN}}
+          github_username: "deep5050"
+          github_email: "dipankarpal5050@gmail.com"
+          commit_msg: "report pushed"
