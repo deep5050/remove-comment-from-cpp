@@ -1,23 +1,20 @@
-name: Auto Comment
-on: [issues, pull_request]
+name: "Greet With A Random Joke"
+on:
+  issues:
+    types: [opened, reopened]
+  pull_request:
+    types: [opened, reopened]
+
 jobs:
-  run:
+  test:
+    name: setup environment
     runs-on: ubuntu-latest
     steps:
-      - uses: bubkoo/auto-comment@v1
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: mast joke mara
+        uses: deep5050/MastJokeMara@qikpatch
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          issuesOpened: >
-            👋 @{{ author }}
-            
-            Thank your for raising a issue. We will try and get back to you as soon as possible.
-            
-            Please make sure you have given us as much context as possible.
-
-
-          pullRequestOpened: >
-            👋 @{{ author }}
-            
-            Thank your for raising your pull request.
-            
-            Please make sure you have followed our contributing guidelines. We will review it as soon as possible
+          issue_msg: '(ISSUE) Hi, {{author}} here is a joke for you \n {{joke}}'
+          PR_msg: ' (PR) Hi, {{author}} here is a joke for you \n {{joke}}'
