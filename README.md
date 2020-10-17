@@ -1,3 +1,3 @@
 # remove comment-from cpp
-The simplest possible way.
 
+The simplest possible way.
